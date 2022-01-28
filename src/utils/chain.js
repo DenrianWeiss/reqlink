@@ -4,8 +4,9 @@ import { ethers } from 'ethers'
 
 export const RegisterUrlOnChainHTML = `
 <html>
-<h1>Register on chain</h1>
+<h1>Short Link, now chained.</h1>
 <p><a href="https://polygonscan.com/address/0xe6cc5a854452f5c61980f50bc7522beb876644ad#writeContract">This contract</a>'s registerLink function can add url shortener.</p>
+<p>Visit me at <a href="https://etherscan.io/address/catball.eth">catball.eth</a></p>
 </html>
 `
 
@@ -56,7 +57,7 @@ const abi = JSON.parse(`
 ]
 `)
 
-const PolygonRpc = 'https://rpc-mainnet.matic.network'
+const PolygonRpc = 'https://speedy-nodes-nyc.moralis.io/e6a27829772cbcebf3af7e5c/polygon/mainnet'
 const ResolverAddress = '0xe6cc5A854452F5C61980F50bc7522Beb876644AD'
 
 export async function getLinkInfo(url) {

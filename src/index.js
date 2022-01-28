@@ -2,25 +2,24 @@
 
 import { Router } from 'itty-router'
 import { getLinkInfo, RegisterUrlOnChainHTML } from './utils/chain.js'
-import { createLink, deleteLink, redirect} from './utils/link.js'
 
 const POLYGON_RPC = 'https://polygon-rpc.com/'
 const router = Router()
 
-router.get('/bc', () => {
+router.get('/', () => {
   return new Response(RegisterUrlOnChainHTML, {
     headers: { 'Content-Type': 'Content-Type": "text/html' },
   })
 })
 
-router.get('/raw/bc/:link', async ({ params }) => {
+router.get('/raw/:link', async ({ params }) => {
   let link = decodeURIComponent(params.link)
   return new Response(JSON.stringify(await getLinkInfo(link)), {
     headers: { 'Content-Type': 'application/json' },
   })
 })
 
-router.get('/bc/:link', async ({ params }) => {
+router.get('/:link', async ({ params }) => {
   let link = decodeURIComponent(params.link)
   return new Response("Redirecting", {
     status: 302,
@@ -29,12 +28,12 @@ router.get('/bc/:link', async ({ params }) => {
     }
   })
 })
+/*
+router.post('/api/link/add/:token/:link/:target', async ({params}) => {console.log("1145141919"); return await createLink(params)})
+router.post('/api/link/del/:token/:link', async ({params}) => {return await deleteLink(params)})
 
-router.post('/api/link/add/:token/:link/:target', createLink)
-
-router.post('/api/link/del/:token/:link', deleteLink)
-
-router.get('/:link', redirect)
+router.get('/:link', async ({params}) => {return await redirect(params)})
+*/
 
 addEventListener('fetch', (e) => {
   e.respondWith(router.handle(e.request))
