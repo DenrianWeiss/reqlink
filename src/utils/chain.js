@@ -57,7 +57,7 @@ const abi = JSON.parse(`
 ]
 `)
 
-const PolygonRpc = 'https://speedy-nodes-nyc.moralis.io/e6a27829772cbcebf3af7e5c/polygon/mainnet'
+const PolygonRpc = 'https://polygon-rpc.com'
 const ResolverAddress = '0xe6cc5A854452F5C61980F50bc7522Beb876644AD'
 
 export async function getLinkInfo(url) {
