@@ -21,10 +21,13 @@ router.get('/raw/:link', async ({ params }) => {
 
 router.get('/:link', async ({ params }) => {
   let link = decodeURIComponent(params.link)
-  return new Response("Redirecting", {
+  let raw = await getLinkInfo(link)
+  let url = raw[1]
+  if (url == '' || raw[0] == '0x0000000000000000000000000000000000000000') url = '/'
+  return new Response(null, {
     status: 302,
     headers: {
-      'Location': (await getLinkInfo(link))[1]
+      'Location': url
     }
   })
 })
